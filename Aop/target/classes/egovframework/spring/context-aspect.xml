@@ -24,7 +24,7 @@
 <!-- 		</aop:aspect> -->
 <!-- 	</aop:config> -->
 	
-	<aop:aspectj-autoproxy />
+<!-- 	<aop:aspectj-autoproxy /> -->
 	
 <!-- 	<bean id="exceptionTransfer" class="org.egovframe.rte.fdl.cmmn.aspect.ExceptionTransfer"> -->
 <!-- 		<property name="exceptionHandlerService"> -->
