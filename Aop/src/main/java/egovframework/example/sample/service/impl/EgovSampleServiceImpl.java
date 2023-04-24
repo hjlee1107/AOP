@@ -73,12 +73,12 @@ public class EgovSampleServiceImpl extends EgovAbstractServiceImpl implements Eg
 	@Override
 	public String insertSample(SampleVO vo) throws Exception {
 		LOGGER.debug(vo.toString());
-
+		
 		/** ID Generation Service */
 		String id = egovIdGnrService.getNextStringId();
 		vo.setId(id);
 		LOGGER.debug(vo.toString());
-
+		
 		sampleDAO.insertSample(vo);
 		return id;
 	}
@@ -138,6 +138,11 @@ public class EgovSampleServiceImpl extends EgovAbstractServiceImpl implements Eg
 	 */
 	@Override
 	public int selectSampleListTotCnt(SampleDefaultVO searchVO) {
+		
+		for(int i = 0; i< 300; i ++) {
+			LOGGER.info(i+"번째 로그 출력!!!");
+		}
+		
 		return sampleDAO.selectSampleListTotCnt(searchVO);
 	}
 

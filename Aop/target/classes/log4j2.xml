@@ -1,29 +1,74 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Configuration>
+
+	<Properties>
+        <Property name="filename">test.log</Property>
+    </Properties>
+	
     <Appenders>
-        <Console name="console" target="SYSTEM_OUT">
-            <PatternLayout pattern="%d %5p [%c] %m%n" />
-        </Console>
+    <!-- Console log -->
+    	 <Console name="console" target="SYSTEM_OUT">
+             <PatternLayout pattern="%d %5p [%c] %m%n" />
+         </Console>
+    
+	<!-- RollingFile -->
+	    <RollingFile name = "rollingFile" fileName = "./logs/rolling/rollingSample.org" filePattern ="./logs/rolling/roiingSample_%i.log">
+	    	<PatternLayout pattern = "%d %5p [%c] %m%n" />
+	    	<Policies>
+	    		<SizeBasedTriggeringPolicy size = "5KB" />
+	    	</Policies>
+	    	<DefaultRolloverStrategy max = "5" fileindex="mix" />
+	    </RollingFile>
+
+	
+	<!-- DailyRollingFile -->	
+	    <RollingFile name = "DailyLog" fileName = "./logs/rolling/dailyLog.org" filePattern ="./logs/rolling/dailyLog_%i.log.%d{yyyy-MM-dd-hh-mm}">
+	    	<PatternLayout pattern = "%d %5p [%c] %m%n" />
+	    	<Policies>
+	    		<TimeBasedTriggeringPolicy interval = "1" modulate = "true"/>
+	    	</Policies>
+	    	<DefaultRolloverStrategy max="7" fileIndex="max" >
+		  	<Delete basePath = "./logs/rolling" maxDepth = "1">
+		  		<IfLastModified age = "1d"/>
+		  	</Delete>
+		  </DefaultRolloverStrategy>
+	    </RollingFile>
+	
     </Appenders>
+    
     <Loggers>
         <Logger name="java.sql" level="INFO" additivity="false">
+        	<AppenderRef ref = "DailyLog" />
+        	<AppenderRef ref ="rollingFile" />
             <AppenderRef ref="console" />
         </Logger>
         <Logger name="egovframework" level="DEBUG" additivity="false">
+        	<AppenderRef ref = "DailyLog" />
+        	<AppenderRef ref ="rollingFile" />
             <AppenderRef ref="console" />
         </Logger>
         <Logger name="org.egovframe" level="DEBUG" additivity="false">
+        	<AppenderRef ref = "DailyLog" />
+        	<AppenderRef ref ="rollingFile" />
             <AppenderRef ref="console" />
         </Logger>
-          <!-- log SQL with timing information, post execution -->
+          log SQL with timing information, post execution
         <Logger name="jdbc.sqltiming" level="INFO" additivity="false">
+        	<AppenderRef ref = "DailyLog" />
+        	<AppenderRef ref ="rollingFile" />
             <AppenderRef ref="console" />
         </Logger>
         <Logger name="org.springframework" level="INFO" additivity="false">
+        	<AppenderRef ref = "DailyLog" />
+        	<AppenderRef ref ="rollingFile" />
             <AppenderRef ref="console" />
         </Logger>
         <Root level="INFO">
+        	<AppenderRef ref = "DailyLog" />
+        	<AppenderRef ref ="rollingFile" />
             <AppenderRef ref="console" />
         </Root>
     </Loggers>
+    
+
 </Configuration>

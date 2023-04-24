@@ -17,6 +17,8 @@ package egovframework.example.sample.service;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 /**
  * @Class Name : EgovSampleService.java
  * @Description : EgovSampleService Class
