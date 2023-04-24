@@ -43,7 +43,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository("sampleDAO")
 public class SampleDAO extends EgovAbstractDAO {
-
+	
 	/**
 	 * 글을 등록한다.
 	 * @param vo - 등록할 정보가 담긴 SampleVO
