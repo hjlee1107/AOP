@@ -6,6 +6,8 @@ import javax.annotation.Resource;
 
 import org.egovframe.rte.fdl.cmmn.EgovAbstractServiceImpl;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.example.model.HelloVO;
 
@@ -14,8 +16,8 @@ import com.example.model.HelloVO;
 public class HelloServiceImpl extends EgovAbstractServiceImpl implements HelloService{
 	
 	@Resource(name = "helloMapper")
-	HelloMapper helloMapper;
-
+	private HelloMapper helloMapper;
+	
 	@Override
 	public List<HelloVO> selectHelloList() throws Exception {
 		
@@ -24,6 +26,24 @@ public class HelloServiceImpl extends EgovAbstractServiceImpl implements HelloSe
 		return helloMapper.selectHelloList();
 		
 	}
+	
+	@Override
+	public String selectUser() throws Exception {
+		
+		return helloMapper.selectUser();
+	}
+
+	@Override
+	public void insert(HelloVO vo) throws Exception {
+		helloMapper.insert(vo);
+	}
+
+	@Override
+	public void update(HelloVO vo) throws Exception {
+		helloMapper.update();
+	}
+	
+
 	
 	
 

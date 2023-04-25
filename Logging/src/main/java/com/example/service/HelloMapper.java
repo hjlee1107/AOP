@@ -8,6 +8,11 @@ import com.example.model.HelloVO;
 
 
 @Mapper("helloMapper")
-public interface HelloMapper {
+public interface HelloMapper{
 	List<HelloVO> selectHelloList() throws Exception;
+	
+	String selectUser() throws Exception;
+	
+	void insert(HelloVO vo) throws Exception;
+	void update() throws Exception;
 }

@@ -15,6 +15,18 @@
 			FROM SAMPLE_USER
 			
 	</select>
+	
+	<select id="selectUser" resultType="String">
+		SELECT USER_NAME FROM SAMPLE_USER WHERE USER_ID = 'hong123'
+	</select>
+	
+	<insert id="insert" parameterType="String">
+		INSERT INTO SAMPLE_USER VALUES(#{user_id}, #{user_name}, #{user_email})
+	</insert>
+	
+	<update id="update">
+		UPDATE SAMPLE_USER SET USER_NAME = '테스트' WHERE USER_ID = 'hong123'
+	</update>
 
 
 
