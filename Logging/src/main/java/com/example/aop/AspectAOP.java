@@ -15,19 +15,16 @@ public class AspectAOP {
 	public Object AroundLog(ProceedingJoinPoint jpt) throws Throwable{
 		
 		long before = System.currentTimeMillis();
-		logger.info("메서드 진입 전 로그");
 		//System.out.println("메서드 실행");
 		
 		try {
 			long after = System.currentTimeMillis();
 			Object ob = jpt.proceed();
-			logger.info("메서드 진입 후 로그" + (after-before));
 			//System.out.println("메서드 실행 시간 : " + (after-before));
 			
 			return ob;
 			
 		} finally {
-			logger.info("메서드 종료 로그");
 			//System.out.println("메서드 실행 종료");
 		}
 	}
